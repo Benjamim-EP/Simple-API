@@ -1,1 +1,1 @@
-describe pedidos;
+SELECT * FROM produtos
