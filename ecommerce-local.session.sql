@@ -1,1 +1,1 @@
-SELECT * FROM produtos
+alter TABLE usuarios modify column email varchar(100) not null
