@@ -6,7 +6,7 @@
             },
             "previewLimit": 50,
             "server": "localhost",
-            "port": 61383,
+            "port": 55848,
             "askForPassword": true,
             "driver": "MariaDB",
             "name": "ecommerce-local",

@@ -1,1 +1,1 @@
-alter TABLE usuarios modify column email varchar(100) not null
+SELECT * from usuarios;
