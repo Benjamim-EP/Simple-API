@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router();
 const mysql = require('../mysql').pool;
 const multer = require('multer')
+const login = require('../middleware/login')
 
 const storage = multer.diskStorage({
     destination: function (req,file,cb) {
@@ -61,7 +62,7 @@ router.get('/',(req,res,next) =>{
     })
 })
 
-router.post('/', upload.single('produto_imagem'),(req, res, next) => {
+router.post('/',upload.single('produto_imagem'),login.obrigatorio,(req, res, next) => {
     //console.log(req.file)
     mysql.getConnection((error, conn) => {
         conn.query(
@@ -121,7 +122,7 @@ router.get('/:id_produto',(req,res,next) =>{
         )
     })
 })
-router.patch('/',(req, res, next) => {
+router.patch('/',login.obrigatorio,(req, res, next) => {
     mysql.getConnection((error, conn) => {
         conn.query(
             `UPDATE produtos
@@ -156,7 +157,7 @@ router.patch('/',(req, res, next) => {
     })
 })
 
-router.delete('/',(req, res, next) => {
+router.delete('/',login.obrigatorio,(req, res, next) => {
     mysql.getConnection((error, conn) => {
         conn.query(
             `DELETE FROM produtos WHERE id_produtos = ?`,
